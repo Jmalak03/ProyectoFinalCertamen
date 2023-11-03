@@ -141,7 +141,7 @@ $(document).on("click", ".boton-guardar-cambios-empleado", function () {
 
                 if (responseJson.valor) {
                     $("#modalEmpleado").modal("hide");
-                    Swal.fire("Listo!", "Empleado fue creado", "success");
+                    Swal.fire("Listo!", "Participante creado", "success");
                     MostrarEmpleados();
                 }
                 else
@@ -162,7 +162,7 @@ $(document).on("click", ".boton-guardar-cambios-empleado", function () {
 
                 if (responseJson.valor) {
                     $("#modalEmpleado").modal("hide");
-                    Swal.fire("Listo!", "Empleado fue actualizado", "success");
+                    Swal.fire("Listo!", "Participante  fue actualizado", "success");
                     MostrarEmpleados();
                 }
                 else
@@ -201,7 +201,7 @@ $(document).on("click", ".boton-eliminar-empleado", function () {
                 .then(responseJson => {
 
                     if (responseJson.valor) {
-                        Swal.fire("Listo!", "Empleado fue elminado", "success");
+                        Swal.fire("Listo!", "Participante elminado", "success");
                         MostrarEmpleados();
                     }
                     else

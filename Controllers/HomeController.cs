@@ -10,16 +10,16 @@ namespace AppCrud.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IGenericRepository<Formacion> _formacionRepository;
-        private readonly IGenericRepository<Participante> _participanteRepository;
+        private readonly IGenericRepository<Departamento> _departamentoRepository;
+        private readonly IGenericRepository<Empleado> _empleadoRepository;
 
         public HomeController(ILogger<HomeController> logger, 
-            IGenericRepository<Formacion> departamentoRepository,
-            IGenericRepository<Participante> empleadoRepository)
+            IGenericRepository<Departamento> departamentoRepository,
+            IGenericRepository<Empleado> empleadoRepository)
         {
             _logger = logger;
-            _formacionRepository = departamentoRepository;
-            _participanteRepository = empleadoRepository;
+            _departamentoRepository = departamentoRepository;
+            _empleadoRepository = empleadoRepository;
         }
 
         public IActionResult Index()
@@ -34,27 +34,26 @@ namespace AppCrud.Controllers
 
 
 
-
         [HttpGet]
-        public async Task< IActionResult> listaFormacion()
+        public async Task<IActionResult> listaDepartamentos()
         {
-            List<Formacion> _lista = await _formacionRepository.Lista();
+            List<Departamento> _lista = await _departamentoRepository.Lista();
 
             return StatusCode(StatusCodes.Status200OK, _lista);
         }
 
         [HttpGet]
-        public async Task<IActionResult> listaParticipantes()
+        public async Task<IActionResult> listaEmpleados()
         {
-            List<Participante> _lista = await _participanteRepository.Lista();
+            List<Empleado> _lista = await _empleadoRepository.Lista();
 
             return StatusCode(StatusCodes.Status200OK, _lista);
         }
 
         [HttpPost]
-        public async Task<IActionResult> guardarParticipante([FromBody] Participante modelo)
+        public async Task<IActionResult> guardarEmpleado([FromBody] Empleado modelo)
         {
-            bool _resultado = await _participanteRepository.Guardar(modelo);
+            bool _resultado = await _empleadoRepository.Guardar(modelo);
 
             if (_resultado)
                 return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
@@ -63,9 +62,9 @@ namespace AppCrud.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> editarParticipante([FromBody] Participante modelo)
+        public async Task<IActionResult> editarEmpleado([FromBody] Empleado modelo)
         {
-            bool _resultado = await _participanteRepository.Editar(modelo);
+            bool _resultado = await _empleadoRepository.Editar(modelo);
 
             if (_resultado)
                 return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
@@ -74,9 +73,9 @@ namespace AppCrud.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> eliminarParticipante(int idParticipante)
+        public async Task<IActionResult> eliminarEmpleado(int idEmpleado)
         {
-            bool _resultado = await _participanteRepository.Eliminar(idParticipante);
+            bool _resultado = await _empleadoRepository.Eliminar(idEmpleado);
 
             if (_resultado)
                 return StatusCode(StatusCodes.Status200OK, new { valor = _resultado, msg = "ok" });
