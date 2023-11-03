@@ -181,7 +181,7 @@ $(document).on("click", ".boton-eliminar-empleado", function () {
 
     Swal.fire({
         title: "Esta seguro?",
-        text: `Eliminar empleado "${_empleado.nombreCompleto}"`,
+        text: `Eliminar participante "${_empleado.nombreCompleto}"`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
