@@ -6,37 +6,38 @@ using System.Reflection;
 
 namespace AppCrud.Repositorios.Implementacion
 {
-    public class ParticipanteRepository : IGenericRepository<Participante>
+    public class EmpleadoRepository : IGenericRepository<Empleado>
     {
         private readonly string _cadenaSQL = "";
-        public ParticipanteRepository(IConfiguration configuracion)
+        public EmpleadoRepository(IConfiguration configuracion)
         {
             _cadenaSQL = configuracion.GetConnectionString("cadenaSQL");
         }
 
-        public async Task<List<Participante>> Lista()
+        public async Task<List<Empleado>> Lista()
         {
-            List<Participante> _lista = new List<Participante>();
+            List<Empleado> _lista = new List<Empleado>();
 
             using (var conexion = new SqlConnection(_cadenaSQL))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("sp_ListaParticipantes", conexion);
+                SqlCommand cmd = new SqlCommand("sp_ListaEmpleados", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (var dr = await cmd.ExecuteReaderAsync())
                 {
                     while (await dr.ReadAsync())
                     {
-                        _lista.Add(new Participante
+                        _lista.Add(new Empleado
                         {
-                            idParticipante = Convert.ToInt32(dr["idParticipante"]),
+                            idEmpleado = Convert.ToInt32(dr["idEmpleado"]),
                             nombreCompleto = dr["nombreCompleto"].ToString(),
-                            refFormacion = new Formacion() {
-                                idFormacion = Convert.ToInt32(dr["idFormacion"]),
+                            refDepartamento = new Departamento()
+                            {
+                                idDepartamento = Convert.ToInt32(dr["idDepartamento"]),
                                 nombre = dr["nombre"].ToString()
                             },
-                            pesoyaltura = Convert.ToInt32(dr["pesoyaltura"]),
+                            sueldo = Convert.ToInt32(dr["sueldo"]),
                             fechaContrato = dr["fechaContrato"].ToString(),
                         });
                     }
@@ -47,14 +48,15 @@ namespace AppCrud.Repositorios.Implementacion
 
             return _lista;
         }
-        public async Task<bool> Guardar(Participante modelo)
+        public async Task<bool> Guardar(Empleado modelo)
         {
-            using (var conexion = new SqlConnection(_cadenaSQL)) {
+            using (var conexion = new SqlConnection(_cadenaSQL))
+            {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("sp_GuardarParticipante", conexion);
+                SqlCommand cmd = new SqlCommand("sp_GuardarEmpleado", conexion);
                 cmd.Parameters.AddWithValue("nombreCompleto", modelo.nombreCompleto);
-                cmd.Parameters.AddWithValue("idDepartamento", modelo.refFormacion.idFormacion);
-                cmd.Parameters.AddWithValue("sueldo", modelo.pesoyaltura);
+                cmd.Parameters.AddWithValue("idDepartamento", modelo.refDepartamento.idDepartamento);
+                cmd.Parameters.AddWithValue("sueldo", modelo.sueldo);
                 cmd.Parameters.AddWithValue("fechaContrato", modelo.fechaContrato);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -67,16 +69,16 @@ namespace AppCrud.Repositorios.Implementacion
             }
         }
 
-        public async Task<bool> Editar(Participante modelo)
+        public async Task<bool> Editar(Empleado modelo)
         {
             using (var conexion = new SqlConnection(_cadenaSQL))
             {
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand("sp_EditarEmpleado", conexion);
-                cmd.Parameters.AddWithValue("idEmpleado", modelo.idParticipante);
+                cmd.Parameters.AddWithValue("idEmpleado", modelo.idEmpleado);
                 cmd.Parameters.AddWithValue("nombreCompleto", modelo.nombreCompleto);
-                cmd.Parameters.AddWithValue("idDepartamento", modelo.refFormacion.idFormacion);
-                cmd.Parameters.AddWithValue("sueldo", modelo.pesoyaltura);
+                cmd.Parameters.AddWithValue("idDepartamento", modelo.refDepartamento.idDepartamento);
+                cmd.Parameters.AddWithValue("sueldo", modelo.sueldo);
                 cmd.Parameters.AddWithValue("fechaContrato", modelo.fechaContrato);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -94,8 +96,8 @@ namespace AppCrud.Repositorios.Implementacion
             using (var conexion = new SqlConnection(_cadenaSQL))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("sp_EliminarParticipante", conexion);
-                cmd.Parameters.AddWithValue("idParticipante", id);
+                SqlCommand cmd = new SqlCommand("sp_EliminarEmpleado", conexion);
+                cmd.Parameters.AddWithValue("idEmpleado", id);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 int filas_afectadas = await cmd.ExecuteNonQueryAsync();
@@ -107,6 +109,6 @@ namespace AppCrud.Repositorios.Implementacion
             }
         }
 
-     
+
     }
 }

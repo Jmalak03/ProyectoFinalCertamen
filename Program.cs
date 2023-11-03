@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IGenericRepository<Formacion>,DepartamentoRepository>();
-builder.Services.AddScoped<IGenericRepository<Participante>,ParticipanteRepository>();
+builder.Services.AddScoped<IGenericRepository<Departamento>,DepartamentoRepository>();
+builder.Services.AddScoped<IGenericRepository<Empleado>,EmpleadoRepository>();
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

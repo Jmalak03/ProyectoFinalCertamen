@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace AppCrud.Repositorios.Implementacion
 {
-    public class DepartamentoRepository : IGenericRepository<Formacion>
+    public class DepartamentoRepository : IGenericRepository<Departamento>
     {
         private readonly string _cadenaSQL = "";
         public DepartamentoRepository(IConfiguration configuracion)
@@ -13,20 +13,23 @@ namespace AppCrud.Repositorios.Implementacion
             _cadenaSQL = configuracion.GetConnectionString("cadenaSQL");
         }
 
-        public async Task<List<Formacion>> Lista()
+        public async Task<List<Departamento>> Lista()
         {
-            List<Formacion> _lista = new List<Formacion>();
+            List<Departamento> _lista = new List<Departamento>();
 
-            using (var conexion = new SqlConnection(_cadenaSQL)) { 
+            using (var conexion = new SqlConnection(_cadenaSQL))
+            {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("sp_ListaFormacion", conexion);
+                SqlCommand cmd = new SqlCommand("sp_ListaDepartamentos", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                using (var dr = await cmd.ExecuteReaderAsync()) {
-                    while (await dr.ReadAsync()) {
-                        _lista.Add(new Formacion
+                using (var dr = await cmd.ExecuteReaderAsync())
+                {
+                    while (await dr.ReadAsync())
+                    {
+                        _lista.Add(new Departamento
                         {
-                            idFormacion = Convert.ToInt32(dr["idFormacion"]),
+                            idDepartamento = Convert.ToInt32(dr["idDepartamento"]),
                             nombre = dr["nombre"].ToString()
                         });
                     }
@@ -38,7 +41,7 @@ namespace AppCrud.Repositorios.Implementacion
             return _lista;
         }
 
-        public Task<bool> Editar(Formacion modelo)
+        public Task<bool> Editar(Departamento modelo)
         {
             throw new NotImplementedException();
         }
@@ -48,11 +51,13 @@ namespace AppCrud.Repositorios.Implementacion
             throw new NotImplementedException();
         }
 
-        public Task<bool> Guardar(Formacion modelo)
+        public Task<bool> Guardar(Departamento modelo)
         {
             throw new NotImplementedException();
         }
 
-     
+
     }
 }
+
+

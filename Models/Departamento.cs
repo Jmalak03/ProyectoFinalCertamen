@@ -1,8 +1,8 @@
 ﻿namespace AppCrud.Models
 {
-    public class Formacion
+    public class Departamento
     {
-        public int idFormacion { get; set; }
+        public int idDepartamento { get; set; }
         public string nombre { get; set; }
     }
 }
