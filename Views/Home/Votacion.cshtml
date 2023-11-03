@@ -1,0 +1,33 @@
+﻿@model VotacionModel
+
+@{
+    ViewData["Title"] = "Votaciones";
+}
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title style="color:white">Concurso de belleza</title>
+</head>
+
+
+<body>
+    <form Id="form1" runat="server">
+        <div>
+            <h1>Elije tu opción de votación</h1>
+            <asp : RadioButtonList Id = "OpcionesVoto" runat = "server">
+                <asp : ListItem Text = "Opción 1" value = "1"/>
+                <asp : ListItem Text = "Opción 2" value = "2"/>
+                <asp : ListItem Text = "Opción 3" value = "3"/>
+                <asp : ListItem Text = "Opción 4" value = "4"/>
+                <asp : ListItem Text = "Opción 5" value = "5"/>
+            </asp RadioButtonList>
+
+            <asp : ButtonId="BtnVotar" runat="server" text="Votar" OnClick="VoteButton_Click" />
+            <p> Resultados: </p>
+            <asp : Label Id="ResultLabel" runat="server" EnableViewState = "False"></asp : Label >            
+
+        </div>
+    </form>
+</body>
+</html>

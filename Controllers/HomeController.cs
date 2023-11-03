@@ -32,6 +32,10 @@ namespace AppCrud.Controllers
             return View();
         }
 
+        public IActionResult Votos()
+        {
+            return View();
+        }
 
 
         [HttpGet]
