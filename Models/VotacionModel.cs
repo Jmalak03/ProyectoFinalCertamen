@@ -14,7 +14,7 @@ namespace APPCRUD.Models
         public class Voto
         {
             public int VotoId { get; set; }
-            public int ConcursanteId { get; set; }
+            public int  ConcursanteId { get; set; }
             public int UserId { get; set; }
         }
     }

@@ -23,7 +23,7 @@ namespace APPCRUD.Controllers
         {
             return Ok(concursantes);
         }
-        [HttpPost("Votar")]
+        [HttpPost("Concursante")]
         public ActionResult Votar (Voto voto)
         {
             var concursante = concursantes.FirstOrDefault(c => c.ConcursanteId == voto.ConcursanteId);
