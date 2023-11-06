@@ -37,6 +37,11 @@ namespace AppCrud.Controllers
             return View();
         }
 
+        public IActionResult Institucion()
+        { return View();
+        
+        }
+
 
 
         public IActionResult Votos()
