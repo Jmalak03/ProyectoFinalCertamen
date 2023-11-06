@@ -14,17 +14,16 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-  background-color: black;
-  color:burlywood;
-  
+    margin-bottom: 60px;
+    background-color: #B4C4B4;
+    color: burlywood;
 }
 
 .gradient-custom {
     /* fallback for old browsers */
-    background: #c471f5;
+    background: #b99366;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
+    background: -webkit-linear-gradient(to right, rgb(255, 255, 255),rgb(255, 255, 255));
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
+    background: linear-gradient(to right, rgb(185, 147,102 ), rgb(255,191,191));
 }
