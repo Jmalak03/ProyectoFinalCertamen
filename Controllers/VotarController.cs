@@ -19,7 +19,7 @@ namespace APPCRUD.Controllers
 
         private List<Voto> votos = new List<Voto>();
         [HttpGet("Concursantes")]
-        public ActionResult GetConcursantes()
+        public ActionResult ConcursanteV()
         {
             return Ok(concursantes);
         }

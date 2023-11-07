@@ -9,6 +9,7 @@ namespace APPCRUD.Models
             public int ConcursanteId { get; set; }
             public string Concursantes { get; set; }
             public int Votos { get; set; }
+         
         }
 
         public class Voto
