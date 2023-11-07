@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br>
+<br>
+
+
+
+
+
+<center> <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+    <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>
+                                                             (function () {
+                                                                 var setting = { "query": "Teatro Nacional de Costa Rica, Calle 5, Catedral, San José, Costa Rica", "width": 1047, "height": 779, "satellite": false, "zoom": 12, "placeId": "ChIJIeF41GbjoI8RXG6rf0PeWuI", "cid": "0xe25ade437fab6e5c", "coords": [9.933153499999998, -84.07708509999999], "lang": "es", "queryString": "Teatro Nacional de Costa Rica, Calle 5, Catedral, San José, Costa Rica", "centerCoord": [9.933153499999998, -84.07708509999999], "id": "map-9cd199b9cc5410cd3b1ad21cab2e54d3", "embed_id": "1025603" };
+                                                                 var d = document;
+                                                                 var s = d.createElement('script');
+                                                                 s.src = 'https://1map.com/js/script-for-user.js?embed_id=1025603';
+                                                                 s.async = true;
+                                                                 s.onload = function (e) {
+                                                                     window.OneMap.initMap(setting)
+                                                                 };
+                                                                 var to = d.getElementsByTagName('script')[0];
+                                                                 to.parentNode.insertBefore(s, to);
+                                                             })();</script><a href="https://1map.com/es/map-embed">1 Map</a>
+</div>
+</center>
+
+
+<form method="POST">
+    <center> <h1 style="color: white">Contactanos</h1></center>
+
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre" /><br />
+  
+    <input type="email" id="email" name="email" placeholder="Email"/><br />
+    <label for="mensaje" style="color: black">Mensaje:</label><br />
+    <textarea id="mensaje" name="mensaje" placeholder="Mensaje"></textarea><br />
+    <input type="submit" method="POST" id="input" value="Enviar mensaje" />
+    <input type="reset" method="POST" id="input" value="Cancelar" />
+
+</form>
+
+
+

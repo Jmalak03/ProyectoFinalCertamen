@@ -42,6 +42,12 @@ namespace AppCrud.Controllers
         
         }
 
+        public IActionResult Contacto() 
+        {
+            return View();
+        }
+
+      
 
 
         public IActionResult Votos()
