@@ -10,6 +10,7 @@
 
 
 
+
 <div id="#Mycarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -43,7 +44,68 @@
 <br >
 <br >
 
+<div id="countdown"> </div>
 
+<style>
+
+
+    #countdown {
+        width: 300px;
+        margin: 0 auto;
+        border: 3px solid #a87b05;
+        background: black;
+        padding: 20px 0px;
+        display: flex;
+        justify-content: space-evenly;
+        border-radius: 10px;
+    }
+
+    .box {
+        background: white;
+        border: 2px solid silver;
+        width: 60px;
+        font-size: 40px;
+        text-align: center;
+        border-radius: 10px;
+        color: black;
+    }
+
+        .box .text {
+            font-size: 12px;
+            background: rgb(255,191,191);
+            color: black;
+            padding: 5px 0;
+            border-radius: 0px 0px 8px 8px;
+            font-family: serif;
+        }
+</style>
+
+<script>
+    var end = new Date('12/12/2023 07:00 PM');
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById('countdown').innerHTML = 'EXPIRED!';
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+        document.getElementById('countdown').innerHTML = '<div class="box">' + days + '<div class="text">DIAS</div></div><div class="box">' + hours + '<div class="text">HORA</div></div><div class="box">' + minutes + '<div class="text">MIN</div></div><div class="box">' + seconds + '<div class="text">SEG</div></div>';
+    }
+    timer = setInterval(showRemaining, 1000);
+
+
+
+</script>
 
 
 <div class="card mb-3" style="max-width: 540px; float: right">
@@ -71,8 +133,8 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">Andrea Escobar </h5>
-                <p class="card-text">Tengo 22 años, estoy estudiando Veterinaria.Me encantan los perros </p>
+                <h5 class="card-title">Stephanie Sanchez </h5>
+                <p class="card-text">Tengo 25 años, estoy estudiando Informatica . Me encantar caminar  </p>
                 <p class="card-text"><small class="text-muted">Última actualización hace 3 minutos</small></p>
             </div>
         </div>

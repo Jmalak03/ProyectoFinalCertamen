@@ -1,0 +1,246 @@
+﻿
+@{
+    ViewData["Title"] = "Reinasdebelleza";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color: white">Reinas de belleza</h1>
+
+
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: serif;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .error {
+        border: 0px solid ;
+    }
+
+    .nombre {
+        width: 100%
+    }
+
+    .formulario {
+        text-align: center;
+        width: 400px;
+        border: 1px solid #eee;
+        padding: 10px;
+    }
+
+        .formulario label, .formulario label ~ input {
+            width: 50%;
+            display: inline-block;
+            float: left;
+        }
+
+        .formulario label {
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        .formulario > div {
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+    .agregar {
+        background-color: green;
+        border-color: green;
+        color: white;
+    }
+
+    #listado {
+        border: 1px solid #eee;
+        margin-top: 20px;
+        width: 400px;
+    }
+
+        #listado th {
+            background-color: #eee;
+            padding: 5px 10px;
+        }
+
+   
+</style>
+
+
+
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: arial;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+   
+
+    .nombre {
+        width: 100%
+    }
+
+    .formulario {
+        text-align: center;
+        width: 400px;
+        border: 1px solid #eee;
+        padding: 10px;
+    }
+
+        .formulario label, .formulario label ~ input {
+            width: 50%;
+            display: inline-block;
+            float: left;
+        }
+
+        .formulario label {
+            text-align: right;
+            padding-right: 20px;
+            color: black;
+        }
+
+        .formulario > div {
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+    .agregar {
+        background-color: green;
+        border-color: green;
+        color: black;
+    }
+
+    #listado {
+        border: 1px solid #eee;
+        margin-top: 20px;
+        width: 400px;
+        color: black;
+    }
+
+        #listado th {
+            background-color: #eee;
+            padding: 5px 10px;
+            color: black;
+        }
+
+        #listado input[type=button] {
+            background-color: transparent;
+            color: transparent;
+
+           
+       
+        }
+</style>
+
+
+<body>
+
+    <form class="formulario">
+        <div>
+            <label>Nombre de Participante</label><input type="text" name="nombre">
+        </div>
+        <div>
+            <label>Cantidad de votos</label><input type="number" name="edad" min="1" max="2" >
+        </div>
+        <div>
+            <br><input type="submit" value="Agregar" class="agregar">
+        </div>
+    </form>
+
+    <table id="listado" class='hide'>
+        <thead>
+        <th>Participante</th>
+        <th>Voto</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+<script>
+    document.querySelector("input[class=agregar]").addEventListener("click", function (e) {
+        // cancelamos el evento submit
+        e.preventDefault();
+
+        var nombre = document.querySelector("input[name=nombre]");
+        var edad = document.querySelector("input[name=edad]");
+
+        // mostramos un error si no ha recibido el nombre
+        if (!nombre.value) {
+            nombre.classList.add("error");
+            return;
+        }
+        nombre.classList.remove("error");
+
+        // mostramos un error si no ha recibido una edad
+        if (isNaN(parseInt(edad.value)) || parseInt(edad.value) <= 0) {
+            edad.classList.add("error");
+            return;
+        }
+        edad.classList.remove("error");
+
+        // añadimos el alumno a la tabla crando el tr, td's y el botón para eliminarlo
+        var tr = document.createElement("tr");
+
+        var tdNombre = document.createElement("td");
+        var txt = document.createTextNode(nombre.value);
+        tdNombre.appendChild(txt);
+        tdNombre.className = "nombre";
+
+        var tdEdad = document.createElement("td");
+        txt = document.createTextNode(edad.value);
+        tdEdad.appendChild(txt);
+        tdEdad.className = "right";
+
+        var tdRemove = document.createElement("td");
+        var buttonRemove = document.createElement("input")
+        buttonRemove.type = "";
+        buttonRemove.value = "";
+        buttonRemove.onclick = function () {
+            // elimina la columna
+            this.parentElement.parentElement.remove();
+
+            // Si no hay ningun alumno, escondemos la tabla
+            if (document.getElementById("listado").querySelector("tbody").querySelectorAll("tr").length == 0) {
+                document.getElementById("listado").classList.add("hide");
+            }
+        };
+        tdRemove.appendChild(buttonRemove);
+
+        tr.appendChild(tdNombre);
+        tr.appendChild(tdEdad);
+        tr.appendChild(tdRemove);
+
+        var tbody = document.getElementById("listado").querySelector("tbody").appendChild(tr);
+
+        // eliminamos la clase que tiene oculta la tabla cando no hay ningun alumno
+        document.getElementById("listado").classList.remove("hide");
+
+        //limpiamos los valores del input
+        edad.value = "";
+        nombre.value = "";
+        nombre.focus();
+
+    });
+</script>
+
+
+

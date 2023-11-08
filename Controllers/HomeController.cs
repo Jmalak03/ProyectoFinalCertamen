@@ -42,6 +42,12 @@ namespace AppCrud.Controllers
         
         }
 
+        public IActionResult Reinasdebelleza()
+        {
+            return View();
+
+        }
+
         public IActionResult Contacto() 
         {
             return View();
