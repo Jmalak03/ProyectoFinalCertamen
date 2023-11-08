@@ -106,31 +106,6 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-.hearts {
-    display: table;
-    width: auto;
-    margin: 0 auto;
-}
 
-    .hearts li {
-        margin: 0 10px;
-        display: inline-block;
-        width: auto;
-        height: 17px;
-        transition: 0.2s all linear;
-        opacity: 0.5
-    }
-
-        .hearts li:hover {
-            opacity: 1;
-        }
-
-            .hearts li:hover .icon {
-                background-position: -20px -84px;
-            }
-
-            .hearts li:hover .count {
-                color: #B20000
-            }
 
   
