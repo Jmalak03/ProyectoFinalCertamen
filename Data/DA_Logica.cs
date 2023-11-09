@@ -10,7 +10,7 @@ namespace   APPCRUD.Data
             {
                 new Usuario { Nombre= "Joss", Correo="administrador@gmail.com" , Clave="123", Roles= new string[]{"Administrador" } },
                  new Usuario { Nombre= "Joshua", Correo="administrador2@gmail.com" , Clave="123", Roles= new string[]{"Administrador" } },
-                  new Usuario { Nombre= "Vo", Correo="joss@gmail.com" , Clave="123", Roles= new string[]{"Votante" } },
+                  new Usuario { Nombre= "Vo", Correo="123@gmail.com" , Clave="123", Roles= new string[]{"Votante" } },
                    
 
 
